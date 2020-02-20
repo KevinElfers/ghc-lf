@@ -2,6 +2,7 @@ package org.lazyfingerz.ghlf.common;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.stream.Collectors;
 import org.lazyfingerz.ghlf.model.Book;
 import org.lazyfingerz.ghlf.model.LfProblemInstance;
 
@@ -54,11 +55,11 @@ public class LfReader {
                         libraryId++;
                     } else {
                         String[] inp = line.split(" ");
-                        List<Book> libBooks = new ArrayList<>();
-                        Arrays.stream(inp).forEach(
-                            i -> libBooks.add(problemInstance.getBooks().get(Integer.parseInt(i)))
+                        lib.setBooks(
+                            Arrays.stream(inp).map(
+                                i -> problemInstance.getBooks().get(Integer.parseInt(i))
+                            ).collect(Collectors.toList())
                         );
-                        lib.setBooks(libBooks);
                         problemInstance.addLibrary(lib);
                     }
 
