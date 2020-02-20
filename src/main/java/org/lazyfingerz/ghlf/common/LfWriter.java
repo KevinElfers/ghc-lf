@@ -25,7 +25,7 @@ public class LfWriter {
       content.append(orderedBooks.stream().map(Objects::toString).collect(joining(" "))).append("\n");
     });
 
-    try (PrintWriter out = new PrintWriter("results/" + filename + ".txt")) {
+    try (PrintWriter out = new PrintWriter("results/" + filename)) {
       out.println(content.toString());
     }
   }
