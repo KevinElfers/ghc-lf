@@ -1,28 +1,24 @@
 package org.lazyfingerz.ghlf.common;
 
-import org.lazyfingerz.ghlf.model.LfSlide;
+import org.lazyfingerz.ghlf.model.LfResult;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.List;
 
 public class LfWriter {
 
-    private ScoreCalculator sc = new ScoreCalculator();
+    private LfScoreCalculator sc = new LfScoreCalculator();
 
-    public void write(List<LfSlide> slides, String filename) throws FileNotFoundException {
-        StringBuffer content = new StringBuffer(slides.size() + "\n");
-        for (LfSlide s : slides) {
-            for (int i = 0; i < s.getImages().size(); i++) {
-                content.append(s.getImages().get(i).getIndex());
-                if (i < s.getImages().size() - 1) {
-                    content.append(" ");
-                }
-            }
-            content.append("\n");
+    public void write(LfResult result, String filename) throws FileNotFoundException {
+        StringBuilder content = new StringBuilder(result.getOutput().size() + "\n");
+        for (Integer i : result.getOutput()) {
+            content.append(i);
+            content.append(" ");
         }
+        content.deleteCharAt(content.length()-1);
+        content.append("\n");
 
-        int score = sc.getScore(slides);
+        int score = sc.getScore(result);
         try (PrintWriter out = new PrintWriter("results/" + score + "-" + filename+"-"+System.currentTimeMillis()+".txt")) {
             out.println(content.toString());
         }
