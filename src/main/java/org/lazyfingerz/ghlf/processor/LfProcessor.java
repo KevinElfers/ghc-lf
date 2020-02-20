@@ -9,7 +9,7 @@ public class LfProcessor {
     public LfResult process(LfProblemInstance problemInstance) {
 
         HashSet<Library> subscribedLibraries = new HashSet<>();
-        List<Library> libraries = new ArrayList<>(problemInstance.getLibraries());
+        List<Library> unsubscribedLibraries = new ArrayList<>(problemInstance.getLibraries());
         LfResult result = new LfResult();
         Library currentlySigningUpLibrary = null;
 
@@ -34,32 +34,34 @@ public class LfProcessor {
                 List<Book> scannedBooks = subscribed.getBestBooks();
                 BookPackage bookPackage = new BookPackage(subscribed, scannedBooks);
                 for (Book book : scannedBooks) {
-
-                    System.out.println(book.getIndex());
+                    System.out.println("Scanning book with id: " + book.getIndex());
                 }
 
                 //add to result
                 result.add(bookPackage);
 
                 // remove new package from all libraries
-                for (Library library : libraries) {
+                for (Library library : unsubscribedLibraries) {
                     library.getBooks().removeAll(bookPackage.getBooks());
                 }
                 for (Library library : subscribedLibraries) {
                     library.getBooks().removeAll(bookPackage.getBooks());
                 }
+                if (currentlySigningUpLibrary != null) {
+                    currentlySigningUpLibrary.getBooks().removeAll(bookPackage.getBooks());
+                }
             }
 
             // unsubscribe empty libraries
-            subscribedLibraries.removeIf(subscribed -> subscribed.getBooks().size() == 0);
+            subscribedLibraries.removeIf(subscribed -> subscribed.getBooks().isEmpty());
 
             // select next library to subscribe
-            if (daysToSignUp <= 0 && libraries.size() > 0) {
+            if (daysToSignUp <= 0 && ! unsubscribedLibraries.isEmpty()) {
                 TreeSet<Library> rankedLibraries = new TreeSet<>(Comparator.naturalOrder());
                 rankedLibraries.addAll(problemInstance.getLibraries());
                 currentlySigningUpLibrary = rankedLibraries.first();
                 daysToSignUp = currentlySigningUpLibrary.getSignup();
-                libraries.remove(currentlySigningUpLibrary);
+                unsubscribedLibraries.remove(currentlySigningUpLibrary);
             }
 
         }
