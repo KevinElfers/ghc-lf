@@ -16,10 +16,17 @@ public class ResultParser {
     this.result = result;
   }
 
-  public List<String> parseUniqueOrderedLibraryIds() {
+  public List<Integer> parseUniqueOrderedLibraryIds() {
     ArrayList<Library> orderedLibraries = getOrderedLibraries();
     return orderedLibraries.stream()
-        .map((library -> library.getId().toString()))
+        .map((Library::getId))
+        .collect(Collectors.toList());
+  }
+
+  public List<Integer> getOrderedBooks(Integer libraryId) {
+    return result.getBookPackages().stream()
+        .filter(bookPackage -> bookPackage.getLibrary().getId() == libraryId)
+        .map(bookPackage -> bookPackage.getLibrary().getId())
         .collect(Collectors.toList());
   }
 

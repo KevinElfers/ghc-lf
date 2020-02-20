@@ -31,11 +31,11 @@ public class ResultParserTest {
 
     //when
     ResultParser parser = new ResultParser(result);
-    List<String> libraryIds = parser.parseUniqueOrderedLibraryIds();
+    List<Integer> libraryIds = parser.parseUniqueOrderedLibraryIds();
 
     //then
     assertEquals(libraryIds.size(), 2);
-    assertEquals(libraryIds.get(0), "0");
-    assertEquals(libraryIds.get(1), "1");
+    assertEquals(libraryIds.get(0), Integer.valueOf(0));
+    assertEquals(libraryIds.get(1), Integer.valueOf(1));
   }
 }
