@@ -20,7 +20,8 @@ public class Main {
 
   public static void main(String[] args) throws IOException {
 
-    Arrays.asList(A, B, C, D, E, F).forEach(filename -> {
+    //Arrays.asList(A, B, C, D, E, F).forEach(filename -> {
+    Arrays.asList(F).forEach(filename -> {
       try {
         System.out.println("Start " + filename);
         LfProblemInstance problemInstance = new LfReader().read("src/main/resources/" + filename);
