@@ -21,8 +21,8 @@ public class ResultParserTest {
     Book b2 = new Book(1, 1);
     Book b3 = new Book(2, 2);
     Book b4 = new Book(3, 3);
-    Library lib2 = new Library(1, null, null, asList(b3, b4));
-    Library lib1 = new Library(0, null, null, asList(b1, b2));
+    Library lib2 = new Library(1, null, null, null, asList(b3, b4));
+    Library lib1 = new Library(0, null, null, null, asList(b1, b2));
 
     result.add(new BookPackage(lib1, asList(b3, b4)));
     result.add(new BookPackage(lib2, asList(b3, b4)));
@@ -49,8 +49,8 @@ public class ResultParserTest {
     Book b2 = new Book(1, 1);
     Book b3 = new Book(2, 2);
     Book b4 = new Book(3, 3);
-    Library lib2 = new Library(1, null, null, asList(b3, b4));
-    Library lib1 = new Library(0, null, null, asList(b1, b2));
+    Library lib2 = new Library(1, null, null, null, asList(b3, b4));
+    Library lib1 = new Library(0, null, null, null, asList(b1, b2));
 
     result.add(new BookPackage(lib1, asList(b1, b2)));
     result.add(new BookPackage(lib2, asList(b3, b4)));
