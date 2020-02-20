@@ -3,32 +3,24 @@ package org.lazyfingerz.ghlf.common;
 import org.lazyfingerz.ghlf.model.LfResult;
 
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import static java.util.stream.Collectors.joining;
 
 public class LfWriter {
 
-  private LfScoreCalculator sc = new LfScoreCalculator();
-
   public void write(LfResult result, String filename) throws FileNotFoundException {
-      ResultParser parser = new ResultParser(result);
+    ResultParser parser = new ResultParser(result);
     StringBuilder content = new StringBuilder();
-//    ArrayList<Library> orderedLibraries = getOrderedLibraries(result);
-//
-//    content.append(
-//        orderedLibraries.stream()
-//            .map(library -> library.getId().toString())
-//            .collect(joining(" "))
-//    ).append("\n");
-//
-//    for (Integer i : result.getOutput()) {
-//      content.append(i);
-//      content.append(" ");
-//    }
-//    content.deleteCharAt(content.length() - 1);
-//    content.append("\n");
-//
-//    int score = sc.getScore(result);
-//    try (PrintWriter out = new PrintWriter("results/" + score + "-" + filename + "-" + System.currentTimeMillis() + ".txt")) {
-//      out.println(content.toString());
-//    }
+
+    List<String> libraryIds = parser.parseUniqueOrderedLibraryIds();
+
+    content.append(libraryIds.size()).append("\n");
+    content.append(libraryIds.stream().collect(joining(" "))).append("\n");
+
+    try (PrintWriter out = new PrintWriter("results/" + filename + ".txt")) {
+      out.println(content.toString());
+    }
   }
 }
