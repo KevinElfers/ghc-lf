@@ -19,4 +19,14 @@ public class LfResult {
   public void add(BookPackage bp) {
     bookPackages.add(bp);
   }
+
+  public int getScore() {
+    int score = 0;
+    for (BookPackage bookPackage : bookPackages) {
+      for (Book book : bookPackage.books) {
+        score += book.getValue();
+      }
+    }
+    return score;
+  }
 }

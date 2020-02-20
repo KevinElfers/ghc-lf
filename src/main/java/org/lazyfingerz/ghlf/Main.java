@@ -27,7 +27,7 @@ public class Main {
         LfProblemInstance problemInstance = new LfReader().read("src/main/resources/" + filename);
         LfResult result = new LfProcessor().process(problemInstance);
         new LfWriter().write(result, filename);
-        System.out.println("Done!");
+        System.out.println("Done! Score:" + result.getScore());
       }
       catch (IOException e) {
         e.printStackTrace();
