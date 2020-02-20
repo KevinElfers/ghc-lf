@@ -10,18 +10,18 @@ import java.io.IOException;
 
 public class Main {
 
-    private final static String A = "src/main/resources/a_example.txt";
-    private final static String B = "src/main/resources/b_read_on.txt";
-    private final static String C = "src/main/resources/c_incunabula.txt";
-    private final static String D = "src/main/resources/d_tough_choices.txt";
-    private final static String E = "src/main/resources/e_so_many_books.txt";
-    private final static String F = "src/main/resources/f_libraries_of_the_world.txt";
+    private final static String A = "a_example.txt";
+    private final static String B = "b_read_on.txt";
+    private final static String C = "c_incunabula.txt";
+    private final static String D = "d_tough_choices.txt";
+    private final static String E = "e_so_many_books.txt";
+    private final static String F = "f_libraries_of_the_world.txt";
 
     public static void main(String[] args) throws IOException {
 
-        String filename = A;
+        String filename = F;
 
-        LfProblemInstance problemInstance = new LfReader().read(filename);
+        LfProblemInstance problemInstance = new LfReader().read("src/main/resources/" + filename);
         LfResult result = new LfProcessor().process(problemInstance);
         new LfWriter().write(result, filename);
     }
