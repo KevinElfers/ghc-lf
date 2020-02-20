@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,6 +12,6 @@ import java.util.ArrayList;
 public class BookPackage {
 
   Library library;
-  ArrayList<Book> books;
+  List<Book> books;
 
 }
