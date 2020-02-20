@@ -1,14 +1,11 @@
 package org.lazyfingerz.ghlf.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 public class LfResult {
 
   List<BookPackage> bookPackages;
-
 }
