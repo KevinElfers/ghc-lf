@@ -17,7 +17,7 @@ public class LfProcessor {
         int day = 0;
         int daysToSignUp = 0;
 
-        while (day < problemInstance.getDays()) {
+        while (day < problemInstance.getDays() ) {
             day++;
             daysToSignUp--;
 
@@ -33,6 +33,10 @@ public class LfProcessor {
                 //get scanned books
                 List<Book> scannedBooks = subscribed.getBestBooks();
                 BookPackage bookPackage = new BookPackage(subscribed, scannedBooks);
+                for (Book book : scannedBooks) {
+
+                    System.out.println(book.getIndex());
+                }
 
                 //add to result
                 result.add(bookPackage);
@@ -41,17 +45,21 @@ public class LfProcessor {
                 for (Library library : libraries) {
                     library.getBooks().removeAll(bookPackage.getBooks());
                 }
+                for (Library library : subscribedLibraries) {
+                    library.getBooks().removeAll(bookPackage.getBooks());
+                }
             }
 
             // unsubscribe empty libraries
             subscribedLibraries.removeIf(subscribed -> subscribed.getBooks().size() == 0);
 
             // select next library to subscribe
-            if (daysToSignUp > 0) {
+            if (daysToSignUp <= 0 && libraries.size() > 0) {
                 TreeSet<Library> rankedLibraries = new TreeSet<>(Comparator.naturalOrder());
-
+                rankedLibraries.addAll(problemInstance.getLibraries());
                 currentlySigningUpLibrary = rankedLibraries.first();
                 daysToSignUp = currentlySigningUpLibrary.getSignup();
+                libraries.remove(currentlySigningUpLibrary);
             }
 
         }

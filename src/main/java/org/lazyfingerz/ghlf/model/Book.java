@@ -3,12 +3,12 @@ package org.lazyfingerz.ghlf.model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Comparator;
+import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@ToString
 public class Book implements Comparable<Book> {
 
   private int index;

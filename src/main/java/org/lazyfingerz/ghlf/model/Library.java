@@ -1,9 +1,6 @@
 package org.lazyfingerz.ghlf.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,6 +12,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Library implements Comparable<Library> {
 
   Integer id;
