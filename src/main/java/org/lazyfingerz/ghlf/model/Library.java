@@ -1,13 +1,15 @@
 package org.lazyfingerz.ghlf.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-@Data
-public class Library implements Comparable<Library>{
+@Getter
+@Setter
+public class Library {
 
   Integer id;
   Integer signup;

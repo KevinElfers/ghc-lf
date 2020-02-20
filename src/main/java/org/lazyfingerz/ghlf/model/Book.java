@@ -1,15 +1,19 @@
 package org.lazyfingerz.ghlf.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+import java.util.Comparator;
+
+@Getter
+@Setter
 @AllArgsConstructor
 public class Book implements Comparable<Book> {
 
-    private int index;
+  private int index;
 
-    private int value;
+  private int value;
 
 
     @Override
