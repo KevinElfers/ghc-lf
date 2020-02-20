@@ -2,10 +2,7 @@ package org.lazyfingerz.ghlf.model;
 
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @Getter
 @Setter
@@ -21,10 +18,10 @@ public class Library implements Comparable<Library> {
   List<Book> books;
 
   public List<Book> getBestBooks() {
-    //TODO: get really best books, not random ones
+    TreeSet<Book> sortedBooks = new TreeSet<>(books);
     ArrayList<Book> result = new ArrayList<>();
-    for (int i = 0; i < booksCapacity; i++) {
-      result.add(books.get(i));
+    for (int i = 0; i < booksCapacity && !sortedBooks.isEmpty(); i++) {
+      result.add(sortedBooks.pollLast());
     }
     return result;
   }

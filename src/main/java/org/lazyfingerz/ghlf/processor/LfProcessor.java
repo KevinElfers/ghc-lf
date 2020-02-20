@@ -58,7 +58,7 @@ public class LfProcessor {
             // select next library to subscribe
             if (daysToSignUp <= 0 && ! unsubscribedLibraries.isEmpty()) {
                 TreeSet<Library> rankedLibraries = new TreeSet<>(Comparator.naturalOrder());
-                rankedLibraries.addAll(problemInstance.getLibraries());
+                rankedLibraries.addAll(unsubscribedLibraries);
                 currentlySigningUpLibrary = rankedLibraries.first();
                 daysToSignUp = currentlySigningUpLibrary.getSignup();
                 unsubscribedLibraries.remove(currentlySigningUpLibrary);
