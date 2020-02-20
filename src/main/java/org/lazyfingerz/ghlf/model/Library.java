@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class Library {
+public class Library implements Comparable<Library> {
 
   Integer id;
   Integer signup;
