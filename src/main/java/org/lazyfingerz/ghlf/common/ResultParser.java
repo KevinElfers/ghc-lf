@@ -26,7 +26,7 @@ public class ResultParser {
   private ArrayList<Library> getOrderedLibraries() {
     ArrayList<Library> orderedLibraries = new ArrayList<>();
     result.getBookPackages().forEach((BookPackage bp) -> {
-      if (orderedLibraries.contains(bp.getLibrary())) {
+      if (!orderedLibraries.contains(bp.getLibrary())) {
         orderedLibraries.add(bp.getLibrary());
       }
     });
