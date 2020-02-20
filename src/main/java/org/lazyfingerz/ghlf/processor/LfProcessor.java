@@ -31,7 +31,7 @@ public class LfProcessor {
             for (Library subscribed : subscribedLibraries) {
 
                 //get scanned books
-                ArrayList<Book> scannedBooks = Library.getBestBooks();
+                List<Book> scannedBooks = subscribed.getBestBooks();
                 BookPackage bookPackage = new BookPackage(subscribed, scannedBooks);
 
                 //add to result

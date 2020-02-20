@@ -22,9 +22,13 @@ public class Library implements Comparable<Library> {
   Integer booksCapacity;
   List<Book> books;
 
-  public static ArrayList<Book> getBestBooks() {
-    //TODO
-    return null;
+  public List<Book> getBestBooks() {
+    //TODO: get really best books, not random ones
+    ArrayList<Book> result = new ArrayList<>();
+    for (int i = 0; i < booksCapacity; i++) {
+      result.add(books.get(i));
+    }
+    return result;
   }
 
   public int getValue() {
