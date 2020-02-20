@@ -9,4 +9,6 @@ public class LfProcessor {
         return new LfResult(problemInstance.getInput());
     }
 
+
+
 }
