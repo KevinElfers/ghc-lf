@@ -16,10 +16,8 @@ public class LfProblemInstance {
     int numberOfBooks;
     int numberOfLibraries;
     int days;
-    HashSet<Book> books;
+    List<Book> books;
     HashSet<Library> libraries;
-
-    LinkedList<Integer> input;
 
     public void addLibrary(Library library) {
         libraries.add(library);
