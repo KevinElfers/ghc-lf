@@ -8,8 +8,6 @@ public class LfProcessor {
 
     public LfResult process(LfProblemInstance problemInstance) {
 
-        List<Book> alreadyUsedBooks = new ArrayList<>();
-        List<BookPackage> allBookPackages = new ArrayList<>();
         HashSet<Library> subscribedLibraries = new HashSet<>();
         List<Library> libraries = new ArrayList<>(problemInstance.getLibraries());
         LfResult result = new LfResult();
@@ -30,25 +28,23 @@ public class LfProcessor {
             }
 
             //create bookpackages for current day from all subscribed libraries;
-            HashSet<BookPackage> newBookPackages = new HashSet<>();
-
             for (Library subscribed : subscribedLibraries) {
+
+                //get scanned books
                 ArrayList<Book> scannedBooks = Library.getBestBooks();
                 BookPackage bookPackage = new BookPackage(subscribed, scannedBooks);
+
+                //add to result
                 result.add(bookPackage);
 
                 // remove new package from all libraries
                 for (Library library : libraries) {
                     library.getBooks().removeAll(bookPackage.getBooks());
                 }
-
             }
 
             // unsubscribe empty libraries
             subscribedLibraries.removeIf(subscribed -> subscribed.getBooks().size() == 0);
-
-            // add new packages to result
-            allBookPackages.addAll(newBookPackages);
 
             // select next library to subscribe
             if (daysToSignUp > 0) {
@@ -58,9 +54,7 @@ public class LfProcessor {
                 daysToSignUp = currentlySigningUpLibrary.getSignup();
             }
 
-
         }
-
 
         return result;
     }
