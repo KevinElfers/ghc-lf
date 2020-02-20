@@ -1,10 +1,12 @@
 package org.lazyfingerz.ghlf.common;
 
+import org.lazyfingerz.ghlf.model.Book;
 import org.lazyfingerz.ghlf.model.BookPackage;
 import org.lazyfingerz.ghlf.model.LfResult;
 import org.lazyfingerz.ghlf.model.Library;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,10 +25,12 @@ public class ResultParser {
         .collect(Collectors.toList());
   }
 
-  public List<Integer> getOrderedBooks(Integer libraryId) {
+  public List<Integer> parseOrderedBooks(Integer libraryId) {
     return result.getBookPackages().stream()
         .filter(bookPackage -> bookPackage.getLibrary().getId() == libraryId)
-        .map(bookPackage -> bookPackage.getLibrary().getId())
+        .map(BookPackage::getBooks)
+        .flatMap(Collection::stream)
+        .map(Book::getIndex)
         .collect(Collectors.toList());
   }
 

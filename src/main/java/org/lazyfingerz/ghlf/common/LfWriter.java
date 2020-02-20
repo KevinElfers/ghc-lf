@@ -20,7 +20,7 @@ public class LfWriter {
     content.append(libraryIds.size()).append("\n");
 
     libraryIds.forEach(libraryId -> {
-      List<Integer> orderedBooks = parser.getOrderedBooks(libraryId);
+      List<Integer> orderedBooks = parser.parseOrderedBooks(libraryId);
       content.append(libraryId +" "+ orderedBooks.size()).append("\n");
       content.append(orderedBooks.stream().map(Objects::toString).collect(joining(" "))).append("\n");
     });
