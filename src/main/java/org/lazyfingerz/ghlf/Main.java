@@ -10,12 +10,12 @@ import java.io.IOException;
 
 public class Main {
 
-    private final static String A = "a.txt";
-    private final static String B = "b.txt";
-    private final static String C = "c.txt";
-    private final static String D = "d.txt";
-    private final static String E = "e.txt";
-    private final static String F = "f.txt";
+    private final static String A = "src/main/resources/a_example.txt";
+    private final static String B = "src/main/resources/b_read_on.txt";
+    private final static String C = "src/main/resources/c_incunabula.txt";
+    private final static String D = "src/main/resources/d_tough_choices.txt";
+    private final static String E = "src/main/resources/e_so_many_books.txt";
+    private final static String F = "src/main/resources/f_libraries_of_the_world.txt";
 
     public static void main(String[] args) throws IOException {
 
