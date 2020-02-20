@@ -9,5 +9,5 @@ import java.util.LinkedList;
 @AllArgsConstructor
 public class LfResult {
 
-    LinkedList<Integer> output;
+
 }
