@@ -18,7 +18,7 @@ public class LfReader {
     public LfProblemInstance read(String filename) throws IOException {
         LinkedList<Integer> input = new LinkedList<>();
         LfProblemInstance problemInstance = new LfProblemInstance();
-        problemInstance.setBooks(new HashSet<>());
+        problemInstance.setBooks(new ArrayList<>());
         problemInstance.setLibraries(new HashSet<>());
 
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -35,7 +35,7 @@ public class LfReader {
                 }
                 if (lineCounter == 1) {
                     int index = 0;
-                    HashSet<Book> books = new HashSet<>();
+                    List<Book> books = new ArrayList<>();
                     for (String i : line.split(" ")) {
                         books.add(new Book(index, Integer.parseInt(i)));
                         index++;
@@ -55,14 +55,9 @@ public class LfReader {
                     } else {
                         String[] inp = line.split(" ");
                         List<Book> libBooks = new ArrayList<>();
-                        for (String i : inp)
-                        {
-                            for (Book p : problemInstance.getBooks()) {
-                                if (p.getIndex() == Integer.parseInt(i)) {
-                                    libBooks.add(p);
-                                }
-                            }
-                        }
+                        Arrays.stream(inp).forEach(
+                            i -> libBooks.add(problemInstance.getBooks().get(Integer.parseInt(i)))
+                        );
                         lib.setBooks(libBooks);
                         problemInstance.addLibrary(lib);
                     }

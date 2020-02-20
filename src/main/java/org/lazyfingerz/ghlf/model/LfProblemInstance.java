@@ -16,7 +16,7 @@ public class LfProblemInstance {
     int numberOfBooks;
     int numberOfLibraries;
     int days;
-    HashSet<Book> books;
+    List<Book> books;
     HashSet<Library> libraries;
 
     public void addLibrary(Library library) {
