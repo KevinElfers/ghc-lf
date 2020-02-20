@@ -19,8 +19,6 @@ public class LfProblemInstance {
     HashSet<Book> books;
     HashSet<Library> libraries;
 
-    LinkedList<Integer> input;
-
     public void addLibrary(Library library) {
         libraries.add(library);
     }
