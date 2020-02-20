@@ -1,18 +1,14 @@
 package org.lazyfingerz.ghlf.common;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.stream.Collectors;
 import org.lazyfingerz.ghlf.model.Book;
 import org.lazyfingerz.ghlf.model.LfProblemInstance;
+import org.lazyfingerz.ghlf.model.Library;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import org.lazyfingerz.ghlf.model.Library;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class LfReader {
 
@@ -60,6 +56,7 @@ public class LfReader {
                                 i -> problemInstance.getBooks().get(Integer.parseInt(i))
                             ).collect(Collectors.toList())
                         );
+                        lib.sortBooks();
                         problemInstance.addLibrary(lib);
                     }
 

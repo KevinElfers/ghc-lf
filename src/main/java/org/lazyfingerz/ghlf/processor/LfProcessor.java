@@ -33,9 +33,7 @@ public class LfProcessor {
                 //get scanned books
                 List<Book> scannedBooks = subscribed.getBestBooks();
                 BookPackage bookPackage = new BookPackage(subscribed, scannedBooks);
-                for (Book book : scannedBooks) {
-                    System.out.println("Scanning book with id: " + book.getIndex());
-                }
+
 
                 //add to result
                 result.add(bookPackage);

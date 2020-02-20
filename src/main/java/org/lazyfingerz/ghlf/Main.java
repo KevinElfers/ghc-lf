@@ -19,7 +19,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        String filename = B;
+        String filename = A;
 
         LfProblemInstance problemInstance = new LfReader().read("src/main/resources/" + filename);
         LfResult result = new LfProcessor().process(problemInstance);

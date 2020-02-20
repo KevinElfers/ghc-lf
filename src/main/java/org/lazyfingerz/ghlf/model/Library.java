@@ -17,11 +17,15 @@ public class Library implements Comparable<Library> {
   Integer booksCapacity;
   List<Book> books;
 
+  public void sortBooks() {
+    Collections.sort(books);
+  }
+
   public List<Book> getBestBooks() {
-    TreeSet<Book> sortedBooks = new TreeSet<>(books);
     ArrayList<Book> result = new ArrayList<>();
-    for (int i = 0; i < booksCapacity && !sortedBooks.isEmpty(); i++) {
-      result.add(sortedBooks.pollLast());
+    for (int i = 0; i < booksCapacity && !books.isEmpty(); i++) {
+      result.add(books.get(books.size()-1));
+      books.remove(books.get(books.size()-1));
     }
     return result;
   }
