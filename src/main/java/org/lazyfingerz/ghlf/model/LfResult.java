@@ -1,14 +1,18 @@
 package org.lazyfingerz.ghlf.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 public class LfResult {
 
-  List<BookPackage> bookPackages;
+  List<BookPackage> bookPackages = new ArrayList<>();
 
+  public void add(BookPackage bp) {
+    bookPackages.add(bp);
+  }
 }

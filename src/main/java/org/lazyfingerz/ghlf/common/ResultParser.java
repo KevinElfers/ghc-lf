@@ -5,18 +5,22 @@ import org.lazyfingerz.ghlf.model.LfResult;
 import org.lazyfingerz.ghlf.model.Library;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultParser {
 
   LfResult result;
 
-
   public ResultParser(LfResult result) {
     this.result = result;
   }
 
-  public String parseUniqueLibraryIds(){
-    return "";
+  public List<String> parseUniqueOrderedLibraryIds() {
+    ArrayList<Library> orderedLibraries = getOrderedLibraries();
+    return orderedLibraries.stream()
+        .map((library -> library.getId().toString()))
+        .collect(Collectors.toList());
   }
 
   private ArrayList<Library> getOrderedLibraries() {
@@ -28,5 +32,4 @@ public class ResultParser {
     });
     return orderedLibraries;
   }
-
 }
