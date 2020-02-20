@@ -2,7 +2,10 @@ package org.lazyfingerz.ghlf.processor;
 
 import org.lazyfingerz.ghlf.model.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.TreeSet;
 
 public class LfProcessor {
 
@@ -55,7 +58,7 @@ public class LfProcessor {
 
             // select next library to subscribe
             if (daysToSignUp <= 0 && ! unsubscribedLibraries.isEmpty()) {
-                TreeSet<Library> rankedLibraries = new TreeSet<>(Comparator.naturalOrder());
+                TreeSet<Library> rankedLibraries = new TreeSet<>(new LibraryComparator(problemInstance.getDays() - day));
                 rankedLibraries.addAll(unsubscribedLibraries);
                 currentlySigningUpLibrary = rankedLibraries.first();
                 daysToSignUp = currentlySigningUpLibrary.getSignup();
