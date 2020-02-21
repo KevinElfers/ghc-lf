@@ -33,14 +33,14 @@ public class Library implements Comparable<Library> {
   public List<Book> getBestBooks() {
     ArrayList<Book> result = new ArrayList<>();
     for (int i = 0; i < booksCapacity && !books.isEmpty(); i++) {
-      result.add(books.get(books.size()-1));
-      books.remove(books.get(books.size()-1));
+      result.add(books.get(books.size() - 1));
+      books.remove(books.get(books.size() - 1));
     }
     return result;
   }
 
   public Double getScore(int leftDays) {
-    if(leftDays <= signup){
+    if (leftDays <= signup) {
       // zu wenig Zeit noch etwas zu machen
       return -1.0;
     }
@@ -50,11 +50,10 @@ public class Library implements Comparable<Library> {
     }
     int score = 0;
     for (int i = 0; i < maximumAmountOfBooks; i++) {
-      score += books.get(books.size()-1-i).getValue();
+      score += books.get(books.size() - 1 - i).getValue();
     }
-    return ((double)score) / signup;
+    return ((double) score) / signup;
   }
-
 
   public int getValue() {
     int value = 0;
@@ -82,5 +81,4 @@ public class Library implements Comparable<Library> {
   public int compareTo(Library other, Integer leftDays) {
     return Double.compare(this.getScore(leftDays), other.getScore(leftDays));
   }
-
 }
