@@ -70,7 +70,7 @@ public class LfProcessor {
         }
         daysToSignUp = currentlySigningUpLibrary.getSignup();
         unsubscribedLibraries.remove(currentlySigningUpLibrary);
-        removePlannedBooks(currentlySigningUpLibrary, unsubscribedLibraries, daysLeft);
+        //removePlannedBooks(currentlySigningUpLibrary, unsubscribedLibraries, daysLeft);
       }
     }
 
